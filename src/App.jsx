@@ -3,6 +3,7 @@ import './App.css'
 import Home from './pages/Home'
 import Contact from './pages/Contact'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 function App() {
 
   return (
@@ -11,6 +12,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
+        <Analytics />
     </BrowserRouter>
   )
 }
