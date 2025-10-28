@@ -5,6 +5,7 @@
 }
 body {
   font-family: 'BR Cobane', sans-serif;
+  background: black;
 }
 .darkveil-canvas {
   width: 100%;
@@ -24,6 +25,7 @@ body {
 .falling-text-container {position: relative;z-index: 1;width: 100%;height: 100%;cursor: pointer;text-align: center;padding-top: 2em;}
 .falling-text-target {display: inline-block;}
 .uppercase{text-transform: uppercase;}
+.coding-terminal-container{margin: 50px auto;width: 100%;height: auto;background:rgb(0, 0, 0); display: flex; justify-content: center; align-items: center; padding-inline: 30px; flex-direction: column; gap:50px;}
 .word {
   display: inline-block;
   margin: 0 2px;

@@ -3,6 +3,8 @@ import Hero from '../components/Hero'
 import MagicBento from '../components/MagicBento'
 import { Sparkles } from '../components/Sparkles';
 import RotatingText from '../components/RotatingText';
+import ShinyText from '../components/ShinyText';
+import CodingTerminal from '../components/CodingTerminal';
 
 
 function Home() {
@@ -30,6 +32,15 @@ function Home() {
       <div className="bento-container" id="services">
         <Sparkles />
         <MagicBento {...bentoProps} />
+      </div>
+      <div className='coding-terminal-container'>
+        <ShinyText 
+          text="Setting up your project..." 
+          disabled={false} 
+          speed={1} 
+          className='custom-class text-3xl text-center text-white relative z-20' 
+        />
+           <CodingTerminal />
       </div>
     </div>
   )

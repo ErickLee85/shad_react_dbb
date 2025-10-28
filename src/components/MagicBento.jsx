@@ -12,7 +12,7 @@ const cardData = [
     color: '#060010',
     title: 'Web Apps & Company Websites',
     description: 'Beautiful, responsive web apps that get the job done.',
-    label: 'Performant Applications'
+    label: 'Applications'
   },
   {
     color: '#060010',
