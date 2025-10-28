@@ -1,0 +1,141 @@
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'BR Cobane', sans-serif;
+}
+.darkveil-canvas {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset:0;
+  z-index: -1;
+}
+.hero-center{display: flex;justify-content: center;align-items: center;flex-direction: column;gap: 50px; width: 100%; height: 100dvh; position: relative; padding: 20px;}
+.hero-container{max-width: 1000px; display: flex; align-items: center; flex-direction: column; justify-content: center; gap: 50px;}
+.hero-text {
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-weight:700;
+  color: white;
+}
+.hero-subtext {
+  font-size: clamp(1rem, 4.5vw, 2rem);
+  color:rgba(211, 211, 211, 0.8);
+  line-height: clamp(2rem, 4vw, 3rem);
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fade-in-text 500ms linear forwards;
+}
+
+@keyframes fade-in-text {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.falling-text-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 2em;
+}
+
+.falling-text-target {
+  display: inline-block;
+}
+
+.word {
+  display: inline-block;
+  margin: 0 2px;
+  user-select: none;
+}
+
+.highlighted {
+  color: cyan;
+  font-weight: bold;
+}
+
+.falling-text-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.shiny-text {
+  color: #b5b5b5a4; /* Adjust this color to change intensity/style */
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: inline-block;
+  animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+
+.shiny-text.disabled {
+  animation: none;
+}
+
+.contact-btn {
+  width:100%;
+  min-width: 200px;
+  max-width: 300px;
+  border-radius: 30px;
+  background:linear-gradient(to right, rgb(98, 0, 255), rgb(24, 8, 24));
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  color:white;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: all 300ms ease-in-out;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.contact-btn:hover {
+  transform: translateY(-2px);
+}
+
+.contact-btn:hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 1s infinite;
+  z-index: 1;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
