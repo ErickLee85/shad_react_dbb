@@ -12,8 +12,8 @@ const handleAnimationComplete = () => {
 };
 
 const items = [
-  { label: "Home", href: "#" },
-  { label: "Services", href: "#" },
+  { label: "Home", href: "#top" },
+  { label: "Services", href: "#services" },
   { label: "Contact", href: "#" },
 ];
 
@@ -54,7 +54,7 @@ function splitText() {
 
 function Hero() {
   return (
-    <div className='hero-center'>
+    <div className='hero-center' id="top">
       <Nav />
         <DarkVeil />
         <div className="hero-container">

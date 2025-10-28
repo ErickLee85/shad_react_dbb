@@ -23,6 +23,7 @@ body {
 @keyframes fade-in-text {to {opacity: 1;transform: translateY(0);}}
 .falling-text-container {position: relative;z-index: 1;width: 100%;height: 100%;cursor: pointer;text-align: center;padding-top: 2em;}
 .falling-text-target {display: inline-block;}
+.uppercase{text-transform: uppercase;}
 .word {
   display: inline-block;
   margin: 0 2px;

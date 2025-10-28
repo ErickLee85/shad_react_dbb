@@ -94,8 +94,18 @@ const GooeyNav = ({
   };
 
   const handleClick = (e, index) => {
+    e.preventDefault(); // Prevent immediate navigation
+    
     const liEl = e.currentTarget;
-    if (activeIndex === index) return;
+    const href = items[index].href;
+    
+    if (activeIndex === index) {
+      // If clicking the same item, just navigate
+      if (href && href !== '#') {
+        window.location.href = href;
+      }
+      return;
+    }
 
     setActiveIndex(index);
     updateEffectPosition(liEl);
@@ -114,6 +124,22 @@ const GooeyNav = ({
 
     if (filterRef.current) {
       makeParticles(filterRef.current);
+    }
+
+    // Navigate after animation completes
+    if (href && href !== '#') {
+      setTimeout(() => {
+        if (href.startsWith('#')) {
+          // Smooth scroll to anchor
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        } else {
+          // Navigate to external URL
+          window.location.href = href;
+        }
+      }, animationTime + 200); // Wait for animation + small buffer
     }
   };
 

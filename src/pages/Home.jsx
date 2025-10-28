@@ -16,14 +16,14 @@ function Home() {
   return (
            <div className='home-container'>
                <Hero />
-               <div className="bento-container">
+               <div className="bento-container" id="services">
                 <BlurText
                 text="What we do"
                 delay={150}
                 animateBy="words"
                 direction="top"
                 onAnimationComplete={handleAnimationComplete}
-                className="heading-text"
+                className="heading-text uppercase"
                 rootMargin='0px'
                 threshold={0.1}
               />

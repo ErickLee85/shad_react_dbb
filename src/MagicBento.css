@@ -63,7 +63,8 @@
 }
 
 .magic-bento-card__label {
-  font-size: 16px;
+   font-size: 1.5rem;
+   font-weight: 700;
 }
 
 .magic-bento-card__title,
@@ -79,9 +80,11 @@
 }
 
 .magic-bento-card__description {
-  font-size: 12px;
+  font-size: 0.9rem;
   line-height: 1.2;
   opacity: 0.9;
+  color:rgb(149, 32, 251);
+  font-weight: 600;
 }
 
 .magic-bento-card--text-autohide .magic-bento-card__title,

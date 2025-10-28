@@ -11,7 +11,7 @@ const cardData = [
   {
     color: '#060010',
     title: 'Web Applications',
-    description: 'Beautiful, responsive sites that actually work',
+    description: 'Beautiful, responsive web apps that get the job done.',
     label: 'Frontend Magic'
   },
   {
@@ -28,9 +28,9 @@ const cardData = [
   },
   {
     color: '#060010',
-    title: 'API Development',
-    description: 'Rock-solid Express.js backends that scale',
-    label: 'Server Side'
+    title: 'Server Side',
+    description: 'Rock-solid Express.js backends that scale with low latency.',
+    label: 'API Development'
   },
   {
     color: '#060010',
@@ -447,11 +447,56 @@ const GlobalSpotlight = ({
   return null;
 };
 
-const BentoCardGrid = ({ children, gridRef }) => (
-  <div className="card-grid bento-section" ref={gridRef}>
-    {children}
-  </div>
-);
+const BentoCardGrid = ({ children, gridRef }) => {
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (gridRef.current && !hasAnimated) {
+      const cards = gridRef.current.querySelectorAll('.magic-bento-card');
+      
+      // Set initial state
+      gsap.set(cards, {
+        opacity: 0,
+        y: 50
+      });
+
+      // Create intersection observer
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && !hasAnimated) {
+              // Animate in with stagger
+              gsap.to(cards, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                stagger: 0.1,
+                delay: 0.2
+              });
+              setHasAnimated(true);
+              observer.disconnect(); // Stop observing after animation
+            }
+          });
+        },
+        {
+          threshold: 0.2, // Trigger when 20% of the element is visible
+          rootMargin: '0px 0px -50px 0px' // Start animation slightly before element is fully visible
+        }
+      );
+
+      observer.observe(gridRef.current);
+
+      return () => observer.disconnect();
+    }
+  }, [children, hasAnimated]);
+
+  return (
+    <div className="card-grid bento-section" ref={gridRef}>
+      {children}
+    </div>
+  );
+};
 
 const useMobileDetection = () => {
   const [isMobile, setIsMobile] = useState(false);
