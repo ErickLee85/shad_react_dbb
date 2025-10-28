@@ -27,25 +27,6 @@ const Nav = memo(() => {
   return <GooeyNav {...NAV_PROPS} />
 });
 
-function splitText() {
-    return (
-        <SplitText
-                text="Software Development"
-                className="hero-text"
-                delay={100}
-                duration={2.5}
-                ease="elastic.out(1,0.3"
-                splitType="words"
-                from={{ opacity: 0, y: 20 }}
-                to={{ opacity: 1, y: 0 }}
-                threshold={0.1}
-                rootMargin="-100px"
-                textAlign="center"
-                onLetterAnimationComplete={handleAnimationComplete}
-                />
-    )
-}
-
 
 // Memoize TextPressure props to prevent recalculation
 const TEXT_PRESSURE_PROPS = {

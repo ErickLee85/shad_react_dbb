@@ -1,8 +1,7 @@
 import React, { useCallback, useMemo } from 'react'
 import Hero from '../components/Hero'
 import MagicBento from '../components/MagicBento'
-import BlurText from '../components/BlurText'
-
+import { Sparkles } from '../components/Sparkles';
 function Home() {
   const handleAnimationComplete = useCallback(() => {
     console.log('lol, it worked :)')
@@ -26,16 +25,7 @@ function Home() {
     <div className='home-container'>
       <Hero />
       <div className="bento-container" id="services">
-        <BlurText
-          text="What we do"
-          delay={150}
-          animateBy="words"
-          direction="top"
-          onAnimationComplete={handleAnimationComplete}
-          className="heading-text uppercase"
-          rootMargin='0px'
-          threshold={0.1}
-        />
+        <Sparkles />
         <MagicBento {...bentoProps} />
       </div>
     </div>
