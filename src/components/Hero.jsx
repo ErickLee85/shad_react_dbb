@@ -5,10 +5,32 @@ import TextPressure from './TextPressure';
 import FallingText from './FallingText';
 import ShinyText from './ShinyText';
 import ContactButton from './ContactButton';
-
+import GooeyNav from './GooeyNav'
+;
 const handleAnimationComplete = () => {
   console.log('All letters have animated!');
 };
+
+const items = [
+  { label: "Home", href: "#" },
+  { label: "Services", href: "#" },
+  { label: "Contact", href: "#" },
+];
+
+function Nav() {
+  return (
+      <GooeyNav
+        items={items}
+        particleCount={15}
+        particleDistances={[90, 10]}
+        particleR={100}
+        initialActiveIndex={0}
+        animationTime={600}
+        timeVariance={300}
+        colors={[1, 2, 3, 1, 2, 3, 1, 4]}
+      />
+  )
+}
 
 function splitText() {
     return (
@@ -33,6 +55,7 @@ function splitText() {
 function Hero() {
   return (
     <div className='hero-center'>
+      <Nav />
         <DarkVeil />
         <div className="hero-container">
                  <TextPressure
