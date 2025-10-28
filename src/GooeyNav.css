@@ -35,6 +35,11 @@
   display: flex;
   position: relative;
   transform: translate3d(0, 0, 0.01px);
+  padding:15px 15px;
+  background:rgba(0,0,0,0.2);
+  backdrop-filter: blur(12px);
+  border-radius: 35px;
+  border:1px solid rgba(0,0,0,0.8);
 }
 
 .gooey-nav-container nav ul {

@@ -1,7 +1,7 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, memo, useCallback, useMemo } from 'react';
 import '../GooeyNav.css';
 
-const GooeyNav = ({
+const GooeyNav = memo(({
   items,
   animationTime = 600,
   particleCount = 15,
@@ -192,6 +192,6 @@ const GooeyNav = ({
       <span className="effect text" ref={textRef} />
     </div>
   );
-};
+});
 
 export default GooeyNav;

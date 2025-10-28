@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { useEffect, useRef, useState, useMemo } from 'react';
+import { useEffect, useRef, useState, useMemo, memo, useCallback } from 'react';
 
 const buildKeyframes = (from, steps) => {
   const keys = new Set([...Object.keys(from), ...steps.flatMap(s => Object.keys(s))]);
@@ -11,7 +11,7 @@ const buildKeyframes = (from, steps) => {
   return keyframes;
 };
 
-const BlurText = ({
+const BlurText = memo(({
   text = '',
   delay = 200,
   className = '',
@@ -94,6 +94,6 @@ const BlurText = ({
       })}
     </p>
   );
-};
+});
 
 export default BlurText;

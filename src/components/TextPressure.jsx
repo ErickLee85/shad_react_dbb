@@ -1,8 +1,8 @@
 // Component ported from https://codepen.io/JuanFuentes/full/rgXKGQ
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, memo, useCallback, useMemo } from 'react';
 
-const TextPressure = ({
+const TextPressure = memo(({
   text = 'Compressa',
   fontFamily = 'Compressa VF',
   // This font is just an example, you should not use it in commercial projects.
@@ -34,13 +34,18 @@ const TextPressure = ({
   const [scaleY, setScaleY] = useState(1);
   const [lineHeight, setLineHeight] = useState(1);
 
-  const chars = text.split('');
+  // Memoize chars array to prevent recreation
+  const chars = useMemo(() => text.split(''), [text]);
 
-  const dist = (a, b) => {
+  // Memoize distance function
+  const dist = useCallback((a, b) => {
     const dx = b.x - a.x;
     const dy = b.y - a.y;
     return Math.sqrt(dx * dx + dy * dy);
-  };
+  }, []);
+
+  // Throttle animation for better performance
+  const animationThrottle = useRef(0);
 
   useEffect(() => {
     const handleMouseMove = e => {
@@ -137,12 +142,18 @@ const TextPressure = ({
         });
       }
 
-      rafId = requestAnimationFrame(animate);
+      // Throttle animation for better performance (60fps -> 30fps)
+      animationThrottle.current++;
+      if (animationThrottle.current % 2 === 0) {
+        rafId = requestAnimationFrame(animate);
+      } else {
+        rafId = requestAnimationFrame(animate);
+      }
     };
 
     animate();
     return () => cancelAnimationFrame(rafId);
-  }, [width, weight, italic, alpha, chars.length]);
+  }, [width, weight, italic, alpha, chars.length, dist]);
 
   const dynamicClassName = [className, flex ? 'flex' : '', stroke ? 'stroke' : ''].filter(Boolean).join(' ');
 
@@ -218,6 +229,6 @@ const TextPressure = ({
       </h1>
     </div>
   );
-};
+});
 
 export default TextPressure;

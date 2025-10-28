@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { memo } from 'react'
 
-function ContactButton() {
+const ContactButton = memo(() => {
   return (
     <div>
         <button className='contact-btn'>
@@ -8,6 +8,6 @@ function ContactButton() {
         </button>
     </div>
   )
-}
+});
 
 export default ContactButton

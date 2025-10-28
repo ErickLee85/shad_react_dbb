@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback, useState } from 'react';
+import { useRef, useEffect, useCallback, useState, useMemo, memo } from 'react';
 import { gsap } from 'gsap';
 import '../MagicBento.css';
 
@@ -513,7 +513,7 @@ const useMobileDetection = () => {
   return isMobile;
 };
 
-const MagicBento = ({
+const MagicBento = memo(({
   textAutoHide = true,
   enableStars = true,
   enableSpotlight = true,
@@ -528,7 +528,25 @@ const MagicBento = ({
 }) => {
   const gridRef = useRef(null);
   const isMobile = useMobileDetection();
-  const shouldDisableAnimations = disableAnimations || isMobile;
+  const shouldDisableAnimations = useMemo(() => 
+    disableAnimations || isMobile, [disableAnimations, isMobile]
+  );
+
+  // Memoize class names and styles to prevent recalculation
+  const memoizedCards = useMemo(() => 
+    cardData.map((card, index) => {
+      const baseClassName = `magic-bento-card ${textAutoHide ? 'magic-bento-card--text-autohide' : ''} ${enableBorderGlow ? 'magic-bento-card--border-glow' : ''}`;
+      return {
+        ...card,
+        index,
+        baseClassName,
+        style: {
+          backgroundColor: card.color,
+          '--glow-color': glowColor
+        }
+      };
+    }), [textAutoHide, enableBorderGlow, glowColor]
+  );
 
   return (
     <>
@@ -541,20 +559,16 @@ const MagicBento = ({
           glowColor={glowColor} />
       )}
       <BentoCardGrid gridRef={gridRef}>
-        {cardData.map((card, index) => {
-          const baseClassName = `magic-bento-card ${textAutoHide ? 'magic-bento-card--text-autohide' : ''} ${enableBorderGlow ? 'magic-bento-card--border-glow' : ''}`;
+        {memoizedCards.map((card) => {
           const cardProps = {
-            className: baseClassName,
-            style: {
-              backgroundColor: card.color,
-              '--glow-color': glowColor
-            }
+            className: card.baseClassName,
+            style: card.style
           };
 
           if (enableStars) {
             return (
               <ParticleCard
-                key={index}
+                key={card.index}
                 {...cardProps}
                 disableAnimations={shouldDisableAnimations}
                 particleCount={particleCount}
@@ -575,7 +589,7 @@ const MagicBento = ({
 
           return (
             <div
-              key={index}
+              key={card.index}
               {...cardProps}
               ref={el => {
                 if (!el) return;
@@ -693,6 +707,6 @@ const MagicBento = ({
       </BentoCardGrid>
     </>
   );
-};
+});
 
 export default MagicBento;
