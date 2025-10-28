@@ -1,5 +1,6 @@
 import React from "react";
 import { SparklesCore } from "./ui/sparkles";
+import BlurText from "./BlurText";
 
 export function Sparkles() {
   return (
@@ -7,18 +8,24 @@ export function Sparkles() {
       className=" w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">
       <h1
         className="md:text-7xl text-3xl lg:text-9xl text-center text-white relative z-20">
-        What We Offer
+            <BlurText
+            text="Our Services"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            className="md:text-7xl text-3xl lg:text-9xl text-center text-white relative z-20"
+            />
       </h1>
-      <div className="w-[60rem] h-40 relative">
+      <div className="w-[60rem] h-60 relative">
         {/* Gradients */}
         <div
-          className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
+          className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-700 to-transparent h-[2px] w-3/4 blur-sm" />
         <div
-          className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
+          className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-700 to-transparent h-px w-3/4" />
         <div
-          className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
+          className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-gray-700 to-transparent h-[5px] w-1/4 blur-sm" />
         <div
-          className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
+          className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-gray-700 to-transparent h-px w-1/4" />
 
         {/* Core component */}
         <SparklesCore

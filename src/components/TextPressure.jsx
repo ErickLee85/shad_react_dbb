@@ -212,7 +212,8 @@ const TextPressure = memo(({
           userSelect: 'none',
           whiteSpace: 'nowrap',
           fontWeight: 100,
-          width: '100%'
+          width: '100%',
+          textShadow: '2px 2px 5px blue'
         }}>
         {chars.map((char, i) => (
           <span

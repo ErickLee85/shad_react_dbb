@@ -74,7 +74,7 @@ body {
   min-width: 200px;
   max-width: 300px;
   border-radius: 30px;
-  background:linear-gradient(45deg, rgb(98, 0, 255), rgb(144, 14, 219));
+  background:linear-gradient(45deg, rgb(78, 74, 211), rgb(149, 32, 251));
   outline: none;
   border: none;
   display: flex;
@@ -100,6 +100,51 @@ body {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
   animation: shimmer 0.7s infinite;
   z-index: 1;
+}
+
+.rotating-container {
+  background: rgb(83, 26, 228);
+  height: 75px;
+  border-radius: 15px;
+  display: inline-grid;
+  place-items: center;
+  color: white;
+  font-weight: 900;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  padding: 0 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rotating-container > * {
+  grid-area: 1/1;
+  width: max-content;
+}
+
+/* Alternative approach for smoother transitions */
+.rotating-container-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rotating-container-inner {
+  background: rgb(83, 26, 228);
+  height: 75px;
+  border-radius: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 900;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  padding: 0 20px;
+  white-space: nowrap;
+  min-width: 0;
+  transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes shimmer {

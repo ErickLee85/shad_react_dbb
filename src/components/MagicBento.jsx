@@ -10,26 +10,26 @@ const MOBILE_BREAKPOINT = 768;
 const cardData = [
   {
     color: '#060010',
-    title: 'Web Applications',
+    title: 'Web Apps & Company Websites',
     description: 'Beautiful, responsive web apps that get the job done.',
-    label: 'Frontend Magic'
+    label: 'Performant Applications'
   },
   {
     color: '#060010',
-    title: 'Mobile Apps',
-    description: 'iOS & Android apps people love to use',
-    label: 'Cross-Platform'
+    title: 'Cross-Platform',
+    description: 'iOS & Android apps built with the latest technologies.',
+    label: 'Mobile Apps'
   },
   {
     color: '#060010',
-    title: 'Desktop Software',
-    description: 'Powerful tools for Windows, Mac & Linux',
-    label: 'Native Power'
+    title: 'Native Power',
+    description: 'Need a project to run on your machine locally? We got you.',
+    label: 'Desktop Software'
   },
   {
     color: '#060010',
     title: 'Server Side',
-    description: 'Rock-solid Express.js backends that scale with low latency.',
+    description: 'Rock-solid Express.js backends that scale with low latency and encryption for safe data transfer.',
     label: 'API Development'
   },
   {

@@ -39,7 +39,7 @@
   background:rgba(0,0,0,0.2);
   backdrop-filter: blur(12px);
   border-radius: 35px;
-  border:1px solid rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.4);
 }
 
 .gooey-nav-container nav ul {

@@ -2,6 +2,9 @@ import React, { useCallback, useMemo } from 'react'
 import Hero from '../components/Hero'
 import MagicBento from '../components/MagicBento'
 import { Sparkles } from '../components/Sparkles';
+import RotatingText from '../components/RotatingText';
+
+
 function Home() {
   const handleAnimationComplete = useCallback(() => {
     console.log('lol, it worked :)')
@@ -17,7 +20,7 @@ function Home() {
     enableMagnetism: false, // Disable for better performance  
     clickEffect: true,
     spotlightRadius: 300,
-    particleCount: 8, // Reduced from 12
+    particleCount: 16, // Reduced from 12
     glowColor: "132, 0, 255"
   }), []);
 

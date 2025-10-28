@@ -43,21 +43,6 @@ const TEXT_PRESSURE_PROPS = {
 };
 
 const Hero = memo(() => {
-  // Memoize ShinyText props
-  const shinyTextProps1 = useMemo(() => ({
-    text: "Desoto Bits & Bytes",
-    disabled: false,
-    speed: 3,
-    className: 'custom-class'
-  }), []);
-
-  const shinyTextProps2 = useMemo(() => ({
-    text: "Artificial Intelligence", 
-    disabled: false,
-    speed: 3,
-    className: 'custom-class'
-  }), []);
-
   return (
     <div className='hero-center' id="top">
       <Nav />
@@ -65,8 +50,8 @@ const Hero = memo(() => {
       <div className="hero-container">
         <TextPressure {...TEXT_PRESSURE_PROPS} />
         <p className='hero-subtext'>
-          You found us! Welcome to <span><ShinyText {...shinyTextProps1} /></span>. We build enterprise grade software,
-          ranging from Mobile & Web applications to APIs and <span><ShinyText {...shinyTextProps2} /></span> integrations.
+          Welcome to Desoto Bits & Bytes LLC. We build enterprise grade software,
+          ranging from Mobile & Web applications to APIs and AI Integration.
         </p>
         <ContactButton />
       </div>
